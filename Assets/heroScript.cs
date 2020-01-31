@@ -18,10 +18,12 @@ public class heroScript : MonoBehaviour
     public float life;
     public float score = 0;
     Rigidbody2D rig;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         posX = rig.position.x;
         posY = rig.position.y;
         life = 5;
@@ -79,7 +81,13 @@ public class heroScript : MonoBehaviour
            rig.position = new Vector2(posX,posY);
            life = 5;
        }
+       if (col.gameObject.tag == "friend")
+       {
+           Application.LoadLevel(Application.loadedLevel + 1);
+       }
     }
+
+    
 
     void OnGUI()
     {
